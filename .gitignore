@@ -1,0 +1,17 @@
+.venv
+__pycache__/
+
+data
+
+explanation
+
+report
+
+requirements.txt
+
+segformer.ipynb
+unet-pp-seg.ipynb
+
+*.pth
+
+.dockerignore
