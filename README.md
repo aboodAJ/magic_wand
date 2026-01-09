@@ -1,4 +1,4 @@
-# Part 1: U-Net Model & Training Strategy
+# U-Net Model & Training Strategy
 
 ## 1. U-Net Architecture
 We utilized the **U-Net** architecture, a convolutional neural network designed for biomedical image segmentation. Its "U" shape consists of:
@@ -31,7 +31,7 @@ These are crucial for identifying objects under varying lighting conditions, whi
 - **Mixed Precision:** We used `torch.amp` (Automatic Mixed Precision) to speed up training and reduce memory usage. This requires careful handling of loss scaling (`GradScaler`) to prevent gradient underflow.
 - **Dataset Splitting:** We explicitly respected the COCO 2017 `train`/`val` split to ensure rigorous evaluation.
 
-# Part 2: Loss Functions & Numerical Stability
+# Loss Functions & Numerical Stability
 
 ## 1. The Challenge with Standard BCE
 Binary Cross Entropy (BCE) is the standard loss for binary segmentation. It is defined as:
@@ -61,7 +61,7 @@ $$ \text{Dice} = \frac{2 |A \cap B|}{|A| + |B|} $$
 $$ \mathcal{L}_{Total} = \mathcal{L}_{BCEWithLogits} + \mathcal{L}_{Dice} $$
 This hybrid loss ensures both pixel-level accuracy (BCE) and global shape alignment (Dice).
 
-# Part 3: The Hybrid Pipeline (Intelligent Scissor)
+# The Hybrid Pipeline (Intelligent Scissor)
 
 ## 1. The Concept
 The core idea is to use Deep Learning for **Semantic Understanding** (Where is the object generally?) and Classical Computer Vision for **Edge Refinement** (Where is the exact pixel boundary?).
